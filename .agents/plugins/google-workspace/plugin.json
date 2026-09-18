@@ -1,0 +1,4 @@
+{
+  "name": "google-workspace",
+  "description": "Project-scoped integration with Google Calendar and Gmail via the official Google Workspace MCP server."
+}

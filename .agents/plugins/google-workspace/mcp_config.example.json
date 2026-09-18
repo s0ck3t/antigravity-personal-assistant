@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "google_workspace": {
+      "command": "node",
+      "args": [
+        "tools/google-workspace-mcp/workspace-server/dist/index.js"
+      ],
+      "env": {
+        "WORKSPACE_FEATURE_OVERRIDES": "gmail.send:off,calendar.deleteEvent:off"
+      }
+    }
+  }
+}

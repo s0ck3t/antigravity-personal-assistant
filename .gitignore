@@ -1,0 +1,33 @@
+# Credentials & sensitive configuration
+.env
+.env.*
+!.env.example
+.trello/
+config.json
+*credentials*
+*secret*
+*.token
+*.key
+*.pem
+*.local.json
+.pii-blocklist.local.json
+
+# Local MCP configuration & external tool clones
+.agents/plugins/**/mcp_config.json
+!.agents/plugins/**/mcp_config.example.json
+tools/
+
+# Operating System & Editor artifacts
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# Dependencies & Environments
+node_modules/
+__pycache__/
+*.pyc
+venv/
+.venv/
+tmp/
