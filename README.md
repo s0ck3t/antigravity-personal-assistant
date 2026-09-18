@@ -198,15 +198,11 @@ The repository includes standalone Python utilities in `scripts/`:
 
 ## 📚 Included Agent Skills
 
-The framework bundles specialized agent capabilities in `.agents/skills/`:
+The framework bundles core agent capabilities in `.agents/skills/`:
 
-* **`personal-assistant`**: Core reasoning loop coordinating calendar, email, Trello, and memory docs.
-* **`assistant-onboarding`**: Interactive wizard guiding new users through initial configuration.
-* **`trello`**: REST API tooling for creating, moving, ordering, and labelling cards.
-* **`board-digest`**: Plain-English status digests of board state and movement.
-* **`due-radar`**: Proactive scanning for due and overdue deadlines.
-* **`life-manager`**: Idea capture, inbox triaging, and anti-stalling coaching.
-* **`store-sort`**: Automatic supermarket aisle-flow sorting for shopping lists with food emoji icons.
+* **`personal-assistant`**: Core reasoning loop coordinating Google Calendar, Gmail, Trello, and living memory docs.
+* **`assistant-onboarding`**: Interactive wizard guiding new users through Trello setup, Google Workspace MCP, and personal context elicitation.
+* **`trello`**: REST API tooling for inspecting boards, creating cards, moving lists, and managing category labels.
 
 ---
 
