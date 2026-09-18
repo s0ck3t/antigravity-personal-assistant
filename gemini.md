@@ -40,6 +40,13 @@
   - Week 2 cards shift forward into their corresponding Week 1 day columns.
 - **Context Over Colour**: Card titles must be self-contained and descriptive. Context prefixes are preferred in text (e.g. `[Home]`, `[Call]`, `[Admin]`, `[Finance]`) and specific appointments start with the time (e.g. `10:30am Dentist`, `7:30pm Strategy Session`).
 
+### Google Assistant Voice Capture & Google Tasks Integration
+- **Full Operational Specification**: [docs/google-tasks.md](file:///docs/google-tasks.md)
+- **Voice Ingestion**: Quick tasks captured on-the-go via Google Assistant (smartphones/smart speakers) flow into Google Tasks (`@default`).
+- **Sync Routine**: During morning reviews, execute `node .agents/skills/google-tasks/scripts/tasks.mjs sync-trello` (or the `tasks_syncToTrello` MCP tool) to mirror new tasks into the board's `To Do` list as `[Google Assistant] <Task>`.
+- **Dual-Presence Persistence**: Tasks are **not deleted** from Google Tasks upon import so that smartphone lock-screen notifications, wearable alerts, and Google Home audible alarms remain functional.
+- **Deduplication**: Ingested IDs are tracked in `~/.google-tasks/sync_state.json` to prevent duplicates across recurring review sessions.
+
 ---
 
 ## 4. Personal Context, Glossary & Continuous Self-Learning Protocol
@@ -75,5 +82,6 @@ To prevent context drift and stale token accumulation, the assistant must rigoro
 When the user asks to be onboarded (e.g. *"onboard me as my personal assistant"* or *"setup personal assistant"*), activate the `assistant-onboarding` skill:
 1. Verify Trello credentials and execute `scripts/bootstrap-trello-board.py`.
 2. Configure the Google Workspace MCP server via `scripts/setup-workspace-mcp.py`.
-3. Interactively interview the user to replace the template/showcase context with their real operational profile in `docs/personal-context.md` and `docs/glossary.md`.
-4. Provide tailored Scheduled Tasks prompts for the Antigravity desktop app sidebar.
+3. (Optional) Configure Google Tasks & Assistant voice capture via `docs/google-tasks.md`.
+4. Interactively interview the user to replace the template/showcase context with their real operational profile in `docs/personal-context.md` and `docs/glossary.md`.
+5. Provide tailored Scheduled Tasks prompts for the Antigravity desktop app sidebar.

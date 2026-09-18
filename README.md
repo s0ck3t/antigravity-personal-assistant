@@ -7,7 +7,7 @@
 [![Python: 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://python.org)
 
 > **An autonomous, agentic executive assistant built for [Google Antigravity](https://deepmind.google/technologies/gemini/).**  
-> Synthesises David Allen’s **Getting Things Done (GTD)** with a **two-week rolling execution horizon**, **Google Calendar**, **Gmail**, and a **self-learning living memory engine**.
+> Synthesises David Allen’s **Getting Things Done (GTD)** with a **two-week rolling execution horizon**, **Google Calendar**, **Gmail**, **Google Assistant / Google Tasks voice capture**, and a **self-learning living memory engine**.
 
 ---
 
@@ -15,13 +15,14 @@
 
 Most AI productivity tools either require constant micromanagement or drift out of date after a single day. 
 
-The **Antigravity Personal Assistant** is designed from the ground up as a continuous, proactive pairing partner. Running locally on your machine, it ingests commitments from your calendar and inbox, maintains a 21-column visual task lifecycle board on Trello, grounds decisions in living long-term memory documents, and executes autonomous morning and evening routines on a CRON schedule.
+The **Antigravity Personal Assistant** is designed from the ground up as a continuous, proactive pairing partner. Running locally on your machine, it ingests commitments from your calendar and inbox, syncs voice-captured tasks from Google Assistant, maintains a 21-column visual task lifecycle board on Trello, grounds decisions in living long-term memory documents, and executes autonomous morning and evening routines on a CRON schedule.
 
 ```mermaid
 flowchart TD
-    subgraph Inputs["Tri-Source Real-World Ingestion"]
+    subgraph Inputs["Multi-Source Real-World Ingestion"]
         GCal["Google Calendar MCP<br/>(Time-bound landscape)"]
         Gmail["Gmail MCP<br/>(VIP triage & drafting)"]
+        GTasks["Google Assistant / Tasks<br/>(Hands-free voice capture)"]
         TrelloAPI["Trello REST API<br/>(21-column GTD board)"]
     end
 
@@ -135,6 +136,19 @@ The assistant connects to Google Workspace via the **Model Context Protocol (MCP
 
 ---
 
+## 🎙️ Hands-Free Voice Capture: Google Assistant & Google Tasks
+
+Capture tasks the moment you think of them, wherever you are:
+
+* **Voice Capture on Phone & Smart Speakers**: Say *"Hey Google, add schedule dentist appointment to my tasks"* on Android/iOS, smartwatches, or Google Home / Nest speakers.
+* **Dual-Presence Persistence**: Tasks remain live in Google Tasks so smartphone lock-screen notifications, wearable reminders, and Google Home audible alarms continue to trigger.
+* **Automated Trello Mirroring**: During your morning standup, the assistant mirrors incoming tasks into the board's `To Do` column as `[Google Assistant] <Task>`.
+* **Guaranteed £0.00 Cost**: Runs via a lightweight Node.js desktop OAuth 2.0 loopback client on a free GCP project with **no billing account required**.
+
+*Architecture & setup guide*: [docs/google-tasks.md](docs/google-tasks.md).
+
+---
+
 ## 🧠 Living Long-Term Memory System
 
 The assistant maintains two canonical, human-readable Markdown files that serve as its long-term grounding:
@@ -202,6 +216,7 @@ The framework bundles core agent capabilities in `.agents/skills/`:
 
 * **`personal-assistant`**: Core reasoning loop coordinating Google Calendar, Gmail, Trello, and living memory docs.
 * **`assistant-onboarding`**: Interactive wizard guiding new users through Trello setup, Google Workspace MCP, and personal context elicitation.
+* **`google-tasks`**: Pure Node.js execution engine and stdio MCP server for Google Tasks CRUD and hands-free Google Assistant voice capture sync to Trello.
 * **`trello`**: REST API tooling for inspecting boards, creating cards, moving lists, and managing category labels.
 
 ---

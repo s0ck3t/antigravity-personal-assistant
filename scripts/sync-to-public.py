@@ -34,6 +34,8 @@ SYNC_TARGETS = [
     ".agents/skills",
     ".agents/plugins/google-workspace/plugin.json",
     ".agents/plugins/google-workspace/mcp_config.example.json",
+    ".agents/plugins/google-tasks/plugin.json",
+    ".agents/plugins/google-tasks/mcp_config.example.json",
     "docs",
     "scripts/bootstrap-trello-board.py",
     "scripts/setup-workspace-mcp.py",

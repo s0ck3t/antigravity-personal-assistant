@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "google_tasks": {
+      "command": "node",
+      "args": [
+        ".agents/skills/google-tasks/scripts/mcp_server.mjs"
+      ]
+    }
+  }
+}

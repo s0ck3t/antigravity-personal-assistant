@@ -47,10 +47,11 @@ Execute the 07:00 Daily Standup following GEMINI.md and the personal-assistant s
 1. Ground yourself by reading docs/personal-context.md and docs/glossary.md.
 2. Ingest today's Google Calendar events using the google_workspace MCP server.
 3. Ingest unread VIP correspondence from Gmail (matching key clients, employers, schools, or family members).
-4. Inspect today's day column on your GTD Trello board.
-5. Cross-reference hard calendar commitments against scheduled Trello tasks to detect any conflicts.
-6. If any scheduling conflict, ambiguous task, or urgent item requires a decision, prompt me using the ask_question tool with structured, mobile-friendly multiple-choice options.
-7. Deliver a crisp, executive morning briefing organised by: What, When, Where, and How.
+4. Ingest and synchronise new voice captures from Google Tasks into Trello's 'To Do' list (via `node .agents/skills/google-tasks/scripts/tasks.mjs sync-trello` or the `tasks_syncToTrello` MCP tool).
+5. Inspect today's day column on your GTD Trello board.
+6. Cross-reference hard calendar commitments against scheduled Trello tasks to detect any conflicts.
+7. If any scheduling conflict, ambiguous task, or urgent item requires a decision, prompt me using the ask_question tool with structured, mobile-friendly multiple-choice options.
+8. Deliver a crisp, executive morning briefing organised by: What, When, Where, and How.
 ```
 
 ---

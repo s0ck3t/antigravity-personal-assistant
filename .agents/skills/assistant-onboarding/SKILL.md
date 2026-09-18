@@ -58,9 +58,10 @@ sequenceDiagram
 ## Detailed Execution Protocol
 
 ### Step 1: Welcome & System Verification
-1. Welcome the user warmly and outline the 4 modules being configured:
+1. Welcome the user warmly and outline the modules being configured:
    - **Trello**: 21-column GTD rolling calendar engine.
    - **Google Workspace MCP**: Calendar commitments and VIP email triage.
+   - **Google Tasks & Assistant (Optional)**: Voice capture on smartphones and smart speakers with automated Trello sync.
    - **Living Memory**: Your personal operational profile and glossary.
    - **Scheduled Tasks**: 07:00 Morning Standup, 20:30 Evening Reconcile, and Sunday Weekly Review.
 2. Verify Python 3 and Node.js are available on the user's system.
@@ -90,6 +91,13 @@ sequenceDiagram
    ```
 2. The script will clone the upstream repository, install dependencies, compile the TypeScript code, generate `.agents/plugins/google-workspace/mcp_config.json`, and initiate the OAuth login flow in the browser.
 3. Once the user completes sign-in, run a test tool call (e.g. `google_workspace:calendar_listEvents`) to verify active connection.
+
+### Step 3b (Optional): Google Tasks & Google Assistant Voice Capture
+1. Ask the user if they wish to configure voice task capture via Google Assistant.
+2. If yes, guide them through the free 3-minute GCP desktop setup in `docs/google-tasks.md`:
+   - Download their OAuth Desktop Client credentials JSON to `~/.google-tasks/client_secret.json`.
+   - Run `node .agents/skills/google-tasks/scripts/tasks.mjs auth` to log in via local loopback.
+   - Verify connection with `node .agents/skills/google-tasks/scripts/tasks.mjs status`.
 
 ### Step 4: Interactive Personal Context Interview
 Conduct a structured interview using the `ask_question` tool to gather the user's operational reality. Do NOT ask all questions at once; walk through them step-by-step:
